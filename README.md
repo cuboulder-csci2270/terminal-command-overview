@@ -1,12 +1,4 @@
-# Terminal Scavenger Hunt
-
-## About this Activity
-
-In this class, you will need to have a basic understanding of how to navigate the terminal. The goal of this scavenger hunt is to familiarize yourself with some of the terminal commands we will be using in this course. 
-
-## Objective
-
-The game is simple: each team will be assigned a unique keyword they must find to finish the hunt. You and your team must navigate through the files in this directory, searching for clues. Follow the clues to be the first to find your keyword, earning the eternal admiration of your classmates. 
+# Terminal Command Overview
 
 ## A Note on File Hierarchy
 
@@ -26,7 +18,7 @@ Computers organize folders and files into something known as a **file hierarchy*
 |  |--| math2350/
 ```
 
-In the above example, anything ending with a `/` is a directory, and everything else is a file. Levels of directory nesting are represented with tabs. For instance, both the `assignments/` and `notes/` directories live inside of the `csci2270/` directory, which itself lives inside of `summer2024/`. For the remainder of the explanation below, we'll use the file hierarchy above.
+In the above example, anything ending with a `/` is a directory, and everything else is a file. Levels of directory nesting are represented with indentation. For instance, both the `assignments/` and `notes/` directories live inside of the `csci2270/` directory, which itself lives inside of `summer2024/`. For the remainder of the explanation below, we'll use the file hierarchy above.
 
 Any time we interact with the terminal, we are operating somewhere within our file hierarchy. In some ways, the file hierarchy *is* your computer. 
 
@@ -86,7 +78,7 @@ jovyan@jupyter-IDENTIKEY:~/summer2024/csci2270$
 
 `cd` stands for "change directory." You can use this command to get around inside the terminal. `cd` supports both *relative* and *absolute* pathing. What are relative and absolute pathing? Great question!
 
-*Relative* pathing refers to the practice of giving the path of the directory to which you want to go relative to where you are now. Think of it like giving directions to a friend. If you're telling them how to get to the cafe from the classroom, you might just say "Go left, then take your first right, walk straight for a bit and then go right again." You just gave your friend directions to the cafe *relative* to their current position.  
+*Relative* pathing refers to the practice of giving the path of the directory to which you want to go relative to where you are now. Think of it like giving directions to a friend. If you're telling them how to get to the cafe, you might just say "Go left, then take your first right, walk straight for a bit and then go right again." You just gave your friend directions to the cafe *relative* to their current position.  
 
 Example:
 ```console
@@ -96,7 +88,7 @@ assignment1.cpp     assignment2.cpp
 jovyan@jupyter-IDENTIKEY:~/summer2024/csci2270/assignments$
 ```
 
-*Absolute* pathing refers to the practice of giving the entire path of the directory to which you want to go, regardless of where you currently are now. Using the example from before, this is like telling your friend "Starting at the entrance to the Engineering center, go up the stairs, then take a left, walk straight for a bit, ..." For the terminal, absolute pathing starts from the root directory. This can be useful when the directory you want to get to is located far away from where you are currently operating. Sometimes it's easier just to go back to the root and find the folder from there.
+*Absolute* pathing refers to the practice of giving the entire path of the directory to which you want to go, regardless of where you currently are now. Using the example from before, this is like telling your friend "Starting at the entrance to the engineering center, go up the stairs, then take a left, walk straight for a bit, ..." For the terminal, absolute pathing starts from the root directory. This can be useful when the directory you want to get to is located far away from where you are currently operating. Sometimes it's easier just to go back to the root and find the folder from there.
 
 Example:
 ```console
@@ -191,6 +183,7 @@ Our new file hierarchy will look like this:
 
 If we want to delete a non-empty folder, we need to add a special `-r` instruction to the `rm` command. The `-r` stands for "recursive." This tells the terminal to delete the folder and everything else inside of it.
 
+Example:
 ```console
 jovyan@jupyter-IDENTIKEY:~/summer2024/csci2270/assignments$ cd ..
 jovyan@jupyter-IDENTIKEY:~/summer2024/csci2270$ rm -r notes
@@ -216,20 +209,62 @@ Our new file hierarchy will look like this:
 
 **Caution:** You may be aware of the `rm -rf` command. The `f` stands for "force." Using this command without discretion can cause you to accidentally delete folders that you do not want gone.
 
+**mkdir**
+`mkdir` stands for "make directory." This command allows you to create a new folder. Like before, the command supports both relative and abosulte pathing. 
+
+Example:
+```console
+jovyan@jupyter-IDENTIKEY:~/summer2024/csci2270$ mkdir recitation
+jovyan@jupyter-IDENTIKEY:~/summer2024/csci2270$ ls
+assignments    recitation     syllabus.txt     
+jovyan@jupyter-IDENTIKEY:~/summer2024/csci2270$
+```
+
+Our new file hierarchy will look like this:
+
+```
+| home/
+|-- jovyan/
+|  | summer2024/
+|  |--| csci2270/*
+|  |  |--| assignments/
+|  |  |  |--| assignment2.cpp
+|  |  |--| syllabus.txt
+|  |  |--| recitation/
+|  |--| math2350/
+```
+
+\* = you are here
+
+**touch**
+`touch` creates a new file. Like before, the command supports both relative and abosulte pathing. 
+
+Example:
+```console
+jovyan@jupyter-IDENTIKEY:~/summer2024/csci2270$ touch recitation/recitation1.cpp
+jovyan@jupyter-IDENTIKEY:~/summer2024/csci2270$ cd recitation
+jovyan@jupyter-IDENTIKEY:~/summer2024/csci2270/recitation$ ls
+recitation1.cpp     
+jovyan@jupyter-IDENTIKEY:~/summer2024/csci2270/recitation$
+```
+
+Our new file hierarchy will look like this:
+
+```
+| home/
+|-- jovyan/
+|  | summer2024/
+|  |--| csci2270/
+|  |  |--| assignments/
+|  |  |  |--| assignment2.cpp
+|  |  |--| syllabus.txt
+|  |  |--| recitation/*
+|  |  |  |--| recitation1.cpp
+|  |--| math2350/
+```
+
+\* = you are here
+
 **More Commands**
 
 There are many more commands available for you to use on the terminal than what we've discussed here. Check out this [guide to more terminal commands](https://gist.github.com/bradtraversy/cc180de0edee05075a6139e42d5f28ce).
-
-## The Hunt Begins!
-
-Now that you're familiar with the basics of the terminal, it's time to begin the hunt! Here's the first clue:
-
-```
-CLUE 1 HERE
-```
-
-Use the terminal commands from above to start searching through files and follow your first clue. 
-
-## End Conditions
-
-The scavenger hunt ends when you find the final clue. Bring your final clue to the instructor to win!
